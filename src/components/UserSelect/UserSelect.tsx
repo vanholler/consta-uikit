@@ -281,4 +281,6 @@ export function UserSelect<
       <div className={cnSelect('HelperInputFakeElement')} ref={helperInputFakeElement}>
         {searchValue}
       </div>
-    </}
+    </SelectContainer>
+  );
+}
