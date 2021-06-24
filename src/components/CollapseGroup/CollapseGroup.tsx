@@ -105,12 +105,12 @@ export const CollapseGroup: CollapseGroup = React.forwardRef((props, ref) => {
         const isDisabled = getDisabled?.(item) ?? false;
         return (
           <Collapse
-            iconPosition={iconPosition}
+            iconPosition={iconPosition as 'left'}
             label={getLabel(item)}
             key={key}
             size={size}
             view={view}
-            closeIcon={closeIcon}
+            closeIcon={closeIcon as undefined}
             rightSide={getRightSide?.(item)}
             horizontalSpace={horizontalSpace}
             icon={icon}
