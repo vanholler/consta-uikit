@@ -1,0 +1,69 @@
+import { CollapseGroupExampleView } from './examples/CollapseGroupExampleView/CollapseGroupExampleView';
+import { CollapseGroupExampleAccordionView } from './examples/CollapseGroupExampleAccordionView/CollapseGroupExampleAccordionView';
+
+# CollapseGroup
+
+## Внешний вид
+
+<CollapseGroupExampleView />
+
+## Вид аккордеон
+
+<CollapseGroupExampleAccordionView />
+
+## Свойства
+
+| Свойство              | Тип                                                                          | По умолчанию          | Описание                                                                    |
+| --------------------- | ---------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------- |
+| `isAccordion`         | `boolean`                                                                    | false                 | Добавляет поведение классического аккордеона                                |
+| `expandedAll`         | `boolean`                                                                    | false                 | Дефолтное состояние для всех коллапсов                                      |
+| `items`               | `Item[]`                                                                     | false                 | Элементы                                                                    |
+| `getLabel`            | (item: ITEM) => string                                                       | -                     | Функция для формирования текста для лейбла                                  |
+| `getKey`              | (item: ITEM) => string                                                       | -                     | Функция для формирования уникального ключа элемента                         |
+| `getContent`          | (item: ITEM) => React.ReactNode                                              | -                     | Функция для получения контента коллапса                                     |
+| `getDisabled`         | (item: ITEM) => boolean                                                      | -                     | Функция для определения disabled состояния                                  |
+| `size?`               | `'l', 'm', 's', 'xs', '2xs'`                                                 | `'m'`                 | Размер                                                                      |
+| `view?`               | `'primary', 'secondary'`                                                     | `'primary'`           | Внешний вид                                                                 |
+| `hoverEffect?`        | `boolean`                                                                    | -                     | Добавляет эффект при ховере коллапса                                        |
+| `divider?`            | `boolean`                                                                    | -                     | Добавляет разделитель между заголовком коллапса и содержимым                |
+| `horizontalSpace?`    | `'6xl', '5xl', '4xl', '3xl', '2xl', 'xl', 'l', 'm', 's', 'xs', '2xs', '3xs'` | -                     | Горизонтальные отступы в заголовке коллапса                                 |
+| `icon?`               | `React.FC<IconProps>`                                                        | `React.FC<IconProps>` | Иконка в закрытом состоянии                                                 |
+| `closeIcon?`          | `React.FC<IconProps>`                                                        | -                     | Иконка в открытом состоянии                                                 |
+| `iconPosition?`       | `'left', 'right'`                                                            | `'left'`              | Расположение иконки                                                         |
+| `directionIcon?`      | `'up','right','down','left','upRight','downRight','upLeft','downLeft',`      | `'up'`                | Направление иконки в закрытом состоянии                                     |
+| `closeDirectionIcon?` | `'up','right','down','left','upRight','downRight','upLeft','downLeft',`      | `'up'`                | Направление иконки в открытом состоянии                                     |
+| `rightSide?`          | `React.ReactNode`                                                            | -                     | Дополнительный контент, который можно поместить рядом с заголовком коллапса |
+| `onClick?`            | `React.EventHandler<React.MouseEvent>`                                       | -                     | Действие при клике на коллапс                                               |
+| `className?`          | `string`                                                                     | -                     | Дополнительный CSS-класс                                                    |
+
+## Пример
+
+```ts
+// src/App.ts
+import React from 'react';
+import { CollapseGroup } from '@consta/uikit/CollapseGroup';
+
+const App = () => {
+   const items = [...]
+
+   const defaultRightSide = [
+      <Badge label="Статус" size="s" />,
+      <IconSun size={getSizeByMap(sizeIconMap, 'm')} />,
+    ];
+
+    return (
+      <CollapseGroup
+        items={items}
+        expandedAll
+        isAccordion
+        getKey={(item) => item.name}
+        getLabel={item => item.name}
+        getDisabled={(item => item.disabled ?? false)}
+        getContent={item => item.text}
+        getRightSide={(item) => item.disabled || defaultRightSide}
+        size={'m'}
+        view={view}
+      />
+    );
+};
+```
