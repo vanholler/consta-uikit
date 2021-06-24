@@ -132,3 +132,11 @@ export function withDefaultGetters<
     getItemAvatarUrl: props.getItemAvatarUrl || defaultGetItemAvatarUrl,
   };
 }
+
+export const searchCompare = (searchValue: string, compare?: string): boolean => {
+  if (!compare) {
+    return false;
+  }
+
+  return compare.toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) !== -1;
+};
