@@ -23,7 +23,6 @@ import mdx from './CollapseGroup.docs.mdx';
 
 const defaultKnobs = () => ({
   size: select('size', collapsePropSize, collapsePropSizeDefault),
-  iconPosition: select('iconPosition', ['left', 'right'], 'left'),
   hoverEffect: boolean('hoverEffect', false),
   isAccordion: boolean('isAccordion', false),
   view: select('view', collapsePropView, collapsePropViewDefault),
@@ -49,7 +48,6 @@ export function Playground() {
   const {
     size,
     hoverEffect,
-    iconPosition,
     view,
     divider,
     horizontalSpace,
@@ -75,7 +73,7 @@ export function Playground() {
       getRightSide={(item) => item.disabled || defaultRightSide}
       size={size}
       hoverEffect={hoverEffect}
-      iconPosition={iconPosition}
+      iconPosition="left"
       view={view}
       divider={divider}
       horizontalSpace={horizontalSpace}
